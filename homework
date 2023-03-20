@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# The purpose of this script is to ask for user input, then print the contents on the screen.
+# User is asked to input their name, bootcamo module name and today's date.
+ 
+ for i in 1 2 3; do echo; done
+ echo "##################################################################################################################"
+ echo 
+ echo "TASK 1: This script is will ask a user to input their name, date and a module, then print everyting  on the screen"
+ echo
+ echo "##################################################################################################################"
+ echo
+ echo
+ #=== Takes name as input: ===#
+ echo
+ echo "Enter your name: "
+ read NAME
+
+
+#=== Lets check if the name is NOT null ===#
+ 
+while [ -z "$NAME" ]
+ do
+  echo "Enter your name, please: "
+  read NAME
+ done
+ echo
+
+
+#=== Takes Date and Month as input: ===#
+
+ echo "Enter todays Date ( Date number: 1-31 ):"
+ read TDAY
+
+ echo "Enter current month ( Month name ):"
+ read TMONTH
+ echo
+ echo "You said today is: $TMONTH $TDAY"
+ echo "System Date is: $(date +"%B %d")"
+ echo
+ 
+echo "So, this Bootcamp offers to learn the basics of a wide range of modern topics:"
+
+
+ #=== Creating a menu using the select construct ===#
+
+ PS3='Please select a bootCamp module: '
+ echo
+
+ choice_of ()
+ {
+ select module #[in list] omitted, so 'select' uses arguments passed to function.
+ do
+   echo "-------------------------------------"
+   echo   
+   echo "OK, $NAME, you chose study the $module module today"
+   echo
+ break
+ done
+ }
+
+choice_of "AWS basic" Git Networking Linux VIM Virtualisation Python3 "Rest API" Docker "AWS Advanced" Terraform Ansible "Computer Vision" Kubernetes Openshift Jenkins Snowflake
+#              $1      $2     $3       $4    $5       $6         $7       $8      $9         $10           $11     $12          $13           $14        $15      $16      $17
+#           passed to choice_of() function
+
+for i in 1 2 3; do echo; done
+echo "##########################################################################"
+echo
+echo "TASK 2: This script will concatenate two strings and find the total lenght"
+echo
+echo "##########################################################################"
+
+#=== Get and assign value (pwd) to a variable "string", then print it ===#
+string=$(pwd)/
+echo "String #1 > Working directory: " $string
+
+#=== Get and asssign a file name to another variable "filename", then print it ===#
+filename=$(basename $0)
+echo "String #2 > Filename: " $filename
+string+=$filename
+echo
+
+#===Print the path name and its lenght on the screen ===#
+
+echo "Path lenght of $string is: "${#string}
